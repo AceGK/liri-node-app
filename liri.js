@@ -1,6 +1,9 @@
 const axios = require('axios');
 const fs = require("fs");
-// const keys = require("./keys.js");
+const keys = require("./keys.js");
+var moment = require('moment');
+
+moment().format();
 
 fs.readFile('random.txt', "utf-8", function(err, res, data){
 });
