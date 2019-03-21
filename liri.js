@@ -3,7 +3,6 @@ const fs = require("fs");
 const keys = require("./keys.js");
 var moment = require('moment');
 
-moment().format();
 
 fs.readFile('random.txt', "utf-8", function(err, res, data){
 });
@@ -47,7 +46,7 @@ const concertThis = function (userQuery) {
                 "Venue: " + response.data[0].venue.name,
                 "Venue: " + response.data[0].venue.country,
                 "Venue: " + response.data[0].venue.city,
-                "Date: " + response.data[0].datetime,
+                "Date: " + moment(response.data[0].datetime).format('MM/DD/YYYY'),
                 "URL: " + response.data[0].url,
             ];
             console.log(concertData);
