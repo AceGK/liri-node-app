@@ -1,8 +1,11 @@
+require("dotenv").config();
+
 const axios = require('axios');
 const fs = require("fs");
 const keys = require("./keys.js");
 var moment = require('moment');
 var Spotify = require('node-spotify-api');
+
 
 
 fs.readFile('random.txt', "utf-8", function(err, res, data){
