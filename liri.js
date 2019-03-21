@@ -2,6 +2,7 @@ const axios = require('axios');
 const fs = require("fs");
 const keys = require("./keys.js");
 var moment = require('moment');
+var Spotify = require('node-spotify-api');
 
 
 fs.readFile('random.txt', "utf-8", function(err, res, data){
@@ -58,6 +59,27 @@ const concertThis = function (userQuery) {
 
 
 
+//SPOTIFY
+// var spotify = new Spotify({
+//     id: "",
+//     secret: ""
+//   });
+
+// const songThis = function (userQuery) {
+//     axios.get(` ${userQuery} `).then(
+//         function (response) {
+//             let songData = [
+//                 "Search: " + userQuery,
+//                 "Song: " + response.data,
+//             ];
+//             console.log(songData);
+//             fs.appendFile("log.txt", songData, function (err) {
+//                 if (err) throw err;
+//             });
+//         });
+// };
+
+
 
 // RANDOM
 const doWhatItSays = function(){
@@ -76,6 +98,10 @@ switch (userInput) {
 
     case 'concert-this':
         concertThis(userQuery);
+        break;
+
+    case 'spotify-this-song':
+        songThis(userQuery);
         break;
 
     case 'do-what-it-says':
