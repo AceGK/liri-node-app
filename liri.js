@@ -35,6 +35,28 @@ const movieThis = function (userQuery) {
 };
 
 
+//BANDS IN TOWN 
+const concertThis = function (userQuery) {
+    axios.get(`https://rest.bandsintown.com/artists/${userQuery}/events?app_id=codingbootcamp`).then(
+        function (response) {
+            let concertData = [
+                "Band: " + userQuery,
+                "Venue: " + response.data[0].venue.name,
+                "Venue: " + response.data[0].venue.country,
+                "Venue: " + response.data[0].venue.city,
+                "Date: " + response.data[0].datetime,
+                "URL: " + response.data[0].url,
+            ];
+            console.log(concertData);
+            fs.appendFile("log.txt", concertData, function (err) {
+                if (err) throw err;
+            });
+        });
+};
+
+
+
+
 // RANDOM
 const doWhatItSays = function(){
     fs.readFile('random.txt', 'utf-8', function(err, res, data) {
@@ -48,6 +70,10 @@ switch (userInput) {
 
     case 'movie-this':
         movieThis(userQuery);
+        break;
+
+    case 'concert-this':
+        concertThis(userQuery);
         break;
 
     case 'do-what-it-says':
