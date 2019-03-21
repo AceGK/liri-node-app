@@ -14,7 +14,7 @@ const userQuery = process.argv.slice(3).join(" ");;
 
 // OMDB
 const movieThis = function (userQuery) {
-    axios.get(`http://www.omdbapi.com/?t=${userQuery}&y=&plot=short&apikey=trilogy`).then(
+    axios.get(`http://www.omdbapi.com/?t=${userQuery}&y=&plot=short&tomatoes=true&apikey=trilogy`).then(
         function (response) {
             let movieData = [
                 "Title: " + response.data.Title,
@@ -28,7 +28,8 @@ const movieThis = function (userQuery) {
                 "Plot: " + response.data.Plot,
                 "Country: " + response.data.Country,
                 "Awards: " + response.data.Awards,
-                "imdbRating: " + response.data.imdbRating,
+                "imdb Rating: " + response.data.imdbRating,
+                "Rotten Tomatoes Rating: " + response.data.tomatoRating
             ];
             console.log(movieData);
             fs.appendFile("log.txt", movieData, function (err) {
